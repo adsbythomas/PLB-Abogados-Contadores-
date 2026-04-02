@@ -342,44 +342,129 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
 .cdata-item { transition: transform 0.3s; }
 .cdata-item:hover { transform: translateX(4px); }
 
-/* ── MINIMAL ANIMATIONS ── */
 
-/* Hero only - simple fade on load */
-@keyframes f { from { opacity:0; } to { opacity:1; } }
-@keyframes fu { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
 
-.hero-tag    { animation: fu 0.4s ease both 0.1s; }
-.hero-title  { animation: fu 0.4s ease both 0.2s; }
-.hero-sub    { animation: fu 0.4s ease both 0.3s; }
-.hero-actions { animation: fu 0.4s ease both 0.4s; }
-.hero-stats  { animation: f 0.4s ease both 0.5s; }
+/* ── ANIMATIONS ── */
 
-/* Subtle hover on cards - just background, no movement */
-.card { transition: background 0.15s; }
-.card:hover { background: var(--white); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+/* Keyframes */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+@keyframes barGrow  { from { height:0; } to { height:100%; } }
+@keyframes lineGrow { from { width:0; } to { width:48px; } }
 
-.insight { transition: background 0.15s; }
-.insight:hover { background: var(--off-white); }
+/* Hero entrance */
+.hero-bar     { animation: barGrow  0.8s cubic-bezier(.4,0,.2,1) both; }
+.hero-tag     { animation: fadeUp   0.6s ease both 0.2s; }
+.hero-title   { animation: fadeUp   0.6s ease both 0.35s; }
+.hero-sub     { animation: fadeUp   0.6s ease both 0.5s; }
+.hero-actions { animation: fadeUp   0.6s ease both 0.65s; }
+.hero-stats   { animation: fadeIn   0.6s ease both 0.8s; }
 
-.member { transition: background 0.15s; }
-.member:hover { background: var(--off-white); }
+/* Section label underline */
+.section-line { display:block; height:2px; background:var(--p); width:0; animation: lineGrow 0.6s ease both 0.2s; }
 
-/* Nav hover underline */
+/* Scroll animations via CSS view() - works on https */
+@supports (animation-timeline: scroll()) {
+  .card {
+    animation: fadeUp 0.5s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 22%;
+  }
+  .insight {
+    animation: fadeUp 0.5s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 22%;
+  }
+  .member {
+    animation: fadeUp 0.5s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 22%;
+  }
+  .nosotros-text {
+    animation: fadeUp 0.7s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 28%;
+  }
+  .highlights {
+    animation: fadeUp 0.7s ease both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 30%;
+  }
+  .equipo-header, .areas-header, .insights-header {
+    animation: fadeUp 0.5s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 18%;
+  }
+  .hl {
+    animation: fadeUp 0.4s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 20%;
+  }
+  .contacto-top-inner {
+    animation: fadeUp 0.6s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 25%;
+  }
+}
+
+/* Card hover */
+.card { transition: background 0.2s, transform 0.25s, box-shadow 0.25s; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.09); }
+.card-icon { transition: transform 0.25s; }
+.card:hover .card-icon { transform: scale(1.15); }
+
+/* Insight hover */
+.insight { transition: background 0.2s, transform 0.25s, box-shadow 0.25s; }
+.insight:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+
+/* Member hover */
+.member { transition: background 0.2s, transform 0.25s; }
+.member:hover { transform: translateY(-3px); }
+
+/* Highlight hover */
+.hl { transition: background 0.2s, padding-left 0.25s; }
+.hl:hover { background: rgba(255,255,255,0.6); padding-left: 0.75rem; }
+
+/* Nav underline */
 .nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable) { position: relative; }
 .nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable)::after {
   content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
   height: 2px; background: var(--p);
-  transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease;
+  transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
 }
 .nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable):hover::after { transform: scaleX(1); }
 
-/* Button hover */
-.btn-solid:hover { background: var(--p-dark); }
-.btn-solid:active, .btn-submit:active { transform: scale(0.98); }
+/* Button effects */
+.btn-solid, .btn-ghost, .btn-submit, .btn-nav-solid, .btn-nav-contable { transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
+.btn-solid:hover  { box-shadow: 0 4px 16px rgba(26,79,163,0.3); }
+.btn-solid:active, .btn-submit:active, .btn-nav-solid:active, .btn-nav-contable:active { transform: scale(0.97); }
 
-/* Contact items */
-.cdata-item { transition: opacity 0.15s; }
-.cdata-item:hover { opacity: 0.8; }
+/* Contact data hover */
+.cdata-item { transition: transform 0.2s; }
+.cdata-item:hover { transform: translateX(5px); }
+
+/* Map button */
+.map-placeholder-btn { transition: background 0.2s, color 0.2s; }
+
+/* Google Translate */
+#google_translate_element { display: inline-flex; align-items: center; }
+#google_translate_element select {
+  font-family: Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: var(--black);
+  color: var(--white);
+  border: 1.5px solid var(--p);
+  padding: 0.38rem 0.8rem;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
+.skiptranslate iframe { display: none !important; }
 </style>
 </head>
 <body>
@@ -410,6 +495,20 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
   </ul>
   
 
+
+<!-- TRANSLATE -->
+<div id="google_translate_element"></div>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'es',
+    includedLanguages: 'en,pt,fr,it,de',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 <button class="hamburger" onclick="openMob()"><span></span><span></span><span></span></button>
 </nav>
 
@@ -543,17 +642,7 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
   <!-- Bottom: map + form side by side -->
   <div class="contacto-bottom">
     <div class="contacto-map">
-      <a href="https://www.google.com/maps/search/?api=1&query=Av.+Corrientes+1464+Buenos+Aires" target="_blank" class="map-link-block">
-        <div class="map-placeholder">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M24 4a14 14 0 0114 14c0 10-14 26-14 26S10 28 10 18A14 14 0 0124 4z"/>
-            <circle cx="24" cy="18" r="5"/>
-          </svg>
-          <div class="map-placeholder-title">Av. Corrientes 1464</div>
-          <div class="map-placeholder-sub">Piso 16, Of. 1605 · CABA, Argentina</div>
-          <div class="map-placeholder-btn">Ver en Google Maps →</div>
-        </div>
-      </a>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9973518279826!2d-58.390031323855155!3d-34.60422847295404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac1942fc08d%3A0x90e50a4d7964f611!2sPantarotto%20L%C3%A9rtora%20%26%20Asocs!5e0!3m2!1ses-419!2sar!4v1775170188725!5m2!1ses-419!2sar" width="100%" height="100%" style="border:0;min-height:480px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <form class="contacto-form-new" onsubmit="handleForm(event)">
       <div class="form-row">
