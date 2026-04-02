@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLB | Pantarotto Lértora Bardagí & Asocs.</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0d0d0d;
+  --dark2: #2c2c2c;
+  --gray: #5a5a5a;
+  --gray-light: #9a9a9a;
+  --gray-line: #d8d8d8;
+  --white: #ffffff;
+  --off-white: #f0f0f0;
+  --bg: #e8e8e8;
+  --p: #1a4fa3;
+  --p-dark: #133a7a;
+  --p-light: #2d6bc4;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--black); line-height: 1.6; overflow-x: hidden; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 0 3.5rem; background: var(--white); border-bottom: 1px solid var(--gray-line); transition: box-shadow 0.3s; }
+nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+
+.logo { display: flex; align-items: baseline; gap: 0.6rem; text-decoration: none; }
+.logo-abbr { font-size: 1.6rem; font-weight: 700; color: var(--black); }
+.logo-abbr span { color: var(--p); }
+.logo-sep { width: 1px; height: 20px; background: var(--gray-line); }
+.logo-name { font-size: 0.68rem; color: var(--gray); max-width: 180px; line-height: 1.3; }
+
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dark2); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--p); }
+.btn-nav-solid { background: var(--p) !important; color: var(--white) !important; padding: 0.45rem 1.2rem; font-weight: 700 !important; }
+.btn-nav-solid:hover { background: var(--p-dark) !important; color: var(--white) !important; }
+.btn-nav-outline { border: 1.5px solid var(--p) !important; color: var(--p) !important; padding: 0.4rem 1.1rem; font-weight: 700 !important; }
+.btn-nav-outline:hover { background: var(--p) !important; color: var(--white) !important; }
+.btn-nav-contable { background: var(--black) !important; color: var(--white) !important; padding: 0.45rem 1.3rem; font-weight: 700 !important; font-size: 0.82rem !important; letter-spacing: 0.08em !important; border: 2px solid var(--black) !important; }
+.btn-nav-contable:hover { background: var(--p) !important; border-color: var(--p) !important; color: var(--white) !important; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--black); }
+
+.mob { display: none; position: fixed; inset: 0; background: var(--white); z-index: 99; flex-direction: column; padding: 6rem 2.5rem 2.5rem; }
+.mob.open { display: flex; }
+.mob a { display: block; font-size: 1.2rem; font-weight: 700; color: var(--black); text-decoration: none; padding: 1rem 0; border-bottom: 1px solid var(--gray-line); }
+.mob a:hover { color: var(--p); }
+.mob-close { position: absolute; top: 1.4rem; right: 1.8rem; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--gray); }
+
+.hero { min-height: 100vh; display: flex; align-items: center; background: var(--white); padding: 0 3.5rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--gray-line); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+.hero-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--p); }
+.hero-content { position: relative; z-index: 1; max-width: 760px; will-change: opacity; }
+.hero-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--p); margin-bottom: 1.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(26,79,163,0.25); }
+.hero-title { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; color: var(--black); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+.hero-title .accent { color: var(--p); }
+.hero-sub { font-size: 1.05rem; color: var(--gray); line-height: 1.75; margin-bottom: 2.5rem; max-width: 560px; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-solid { display: inline-block; padding: 0.85rem 2rem; background: var(--p); color: var(--white); font-family: Arial; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+.btn-solid:hover { background: var(--p-dark); }
+.btn-ghost { display: inline-block; padding: 0.85rem 2rem; background: transparent; color: var(--black); font-family: Arial; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--gray-line); transition: border-color 0.2s, color 0.2s; }
+.btn-ghost:hover { border-color: var(--p); color: var(--p); }
+.hero-stats { position: absolute; right: 3.5rem; bottom: 4rem; display: flex; flex-direction: column; gap: 2rem; z-index: 1; text-align: right; }
+.stat-num { font-size: 2.8rem; font-weight: 700; color: var(--black); line-height: 1; }
+.stat-num span { color: var(--p); }
+.stat-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-light); margin-top: 0.2rem; }
+
+section { padding: 6rem 3.5rem; }
+.label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--p); margin-bottom: 0.75rem; }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--black); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+
+.nosotros { background: var(--bg); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.nosotros-text p { font-size: 0.95rem; color: var(--gray); line-height: 1.85; margin-bottom: 1rem; }
+.highlights { background: var(--white); border: 1px solid var(--gray-line); padding: 0 2rem; }
+.hl { display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem; align-items: start; padding: 1.75rem 0; border-bottom: 1px solid var(--gray-line); }
+.hl:last-child { border-bottom: none; }
+.hl-num { font-size: 2.2rem; font-weight: 700; color: var(--black); line-height: 1; }
+.hl-num span { color: var(--p); }
+.hl-text strong { display: block; font-size: 0.82rem; font-weight: 700; color: var(--black); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+.hl-text p { font-size: 0.85rem; color: var(--gray); }
+
+.areas { background: var(--bg); border-top: 1px solid var(--gray-line); }
+.areas-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+.areas-sub { font-size: 0.92rem; color: var(--gray); margin-top: 0.5rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--gray-line); border: 1px solid var(--gray-line); }
+.card { background: var(--white); padding: 2.25rem 2rem; position: relative; transition: background 0.25s; }
+.card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--p); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.card:hover { background: var(--off-white); }
+.card:hover::before { transform: scaleX(1); }
+.card-icon { width: 28px; height: 28px; margin-bottom: 1.25rem; }
+.card-name { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 0.6rem; }
+.card-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.7; }
+
+.equipo { background: var(--bg); }
+.equipo-header { margin-bottom: 3.5rem; }
+.grid-team { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--gray-line); border: 1px solid var(--gray-line); }
+.member { background: var(--white); padding: 2rem 1.5rem; transition: background 0.2s; }
+.member:hover { background: var(--off-white); }
+.avatar { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 1.25rem; }
+.member-name { font-size: 0.95rem; font-weight: 700; color: var(--black); margin-bottom: 0.2rem; }
+.member-role { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--p); margin-bottom: 0.6rem; }
+.member-spec { font-size: 0.8rem; color: var(--gray-light); line-height: 1.55; }
+.member-cta { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--off-white); border: 2px dashed var(--gray-line); padding: 2rem 1.5rem; }
+.member-cta p { font-size: 0.82rem; color: var(--gray); line-height: 1.6; margin-bottom: 1.25rem; }
+
+.insights { background: var(--bg); border-top: 1px solid var(--gray-line); }
+.insights-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+.link-arr { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--p); text-decoration: none; }
+.link-arr:hover { text-decoration: underline; }
+.grid-insights { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1px; background: var(--gray-line); border: 1px solid var(--gray-line); }
+.insight { background: var(--white); padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; transition: background 0.2s; }
+.insight:hover { background: var(--off-white); }
+.insight-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--p); }
+.insight-title { font-size: 1rem; font-weight: 700; color: var(--black); line-height: 1.4; }
+.insight.featured .insight-title { font-size: 1.2rem; }
+.insight-excerpt { font-size: 0.83rem; color: var(--gray); line-height: 1.7; }
+.insight-date { font-size: 0.68rem; color: var(--gray-light); }
+
+.contacto { background: var(--bg); border-top: 1px solid var(--gray-line); }
+.contacto-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+.contacto-desc { font-size: 0.92rem; color: var(--gray); line-height: 1.8; margin-bottom: 2.5rem; }
+.contact-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-list li { display: grid; grid-template-columns: 90px 1fr; gap: 1rem; font-size: 0.85rem; }
+.ci-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--p); padding-top: 0.1rem; }
+.ci-val { color: var(--dark2); line-height: 1.55; }
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); }
+.form-group input, .form-group select, .form-group textarea { background: var(--white); border: 1px solid var(--gray-line); color: var(--black); font-family: Arial; font-size: 0.88rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; width: 100%; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray-light); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--p); }
+.form-group select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%231a4fa3' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.btn-submit { background: var(--p); color: var(--white); font-family: Arial; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border: none; padding: 0.9rem 2rem; cursor: pointer; align-self: flex-start; transition: background 0.2s; }
+.btn-submit:hover { background: var(--p-dark); }
+
+footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem; }
+.footer-logo { font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+.footer-logo span { color: var(--p-light); }
+.footer-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 240px; }
+.footer-col h4 { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.footer-col ul a { font-size: 0.82rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+.footer-social { display: flex; gap: 1rem; }
+.footer-social a { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.75rem; font-weight: 700; transition: all 0.2s; }
+.footer-social a:hover { border-color: var(--p-light); color: var(--p-light); }
+
+
+
+
+@media (max-width: 1100px) {
+  .nosotros { grid-template-columns: 1fr; gap: 3rem; }
+  .grid-3 { grid-template-columns: repeat(2,1fr); }
+  .contacto-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .grid-insights { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 4rem 1.5rem; }
+  .hero { padding: 1.5rem; padding-top: 100px; min-height: auto; }
+  .hero-stats { position: static; flex-direction: row; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; text-align: left; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-team { grid-template-columns: 1fr 1fr; }
+  footer { padding: 3rem 1.5rem 1.5rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 1rem; }
+  .areas-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .insights-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* CONTACTO REDESIGN */
+.contacto { padding: 0; background: var(--bg); }
+.contacto-top { background: var(--black); padding: 4rem 3.5rem; }
+.contacto-top-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+.contacto-data { display: flex; flex-direction: column; gap: 1.5rem; }
+.cdata-item { display: flex; align-items: flex-start; gap: 1rem; }
+.cdata-icon { width: 36px; height: 36px; min-width: 36px; background: #3a3a3a; border: 1px solid #555; display: flex; align-items: center; justify-content: center; color: #aaa; }
+.cdata-icon svg { width: 16px; height: 16px; }
+.cdata-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--p-light); margin-bottom: 0.25rem; }
+.cdata-val { font-size: 0.85rem; color: rgba(255,255,255,0.92); line-height: 1.6; }
+.contacto-bottom { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+.contacto-map { position: relative; min-height: 480px; }
+.contacto-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; filter: grayscale(20%); }
+.contacto-form-new { display: flex; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--white); border-left: 1px solid var(--gray-line); }
+@media (max-width: 1100px) {
+  .contacto-top-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contacto-bottom { grid-template-columns: 1fr; }
+  .contacto-map { min-height: 300px; }
+}
+@media (max-width: 768px) {
+  .contacto-top { padding: 3rem 1.5rem; }
+  .contacto-form-new { padding: 2rem 1.5rem; }
+}
+
+.map-link-block { display: block; width: 100%; height: 100%; text-decoration: none; }
+.map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 480px; background: #1a1a1a; color: rgba(255,255,255,0.7); text-align: center; padding: 3rem; gap: 1rem; transition: background 0.3s; }
+.map-link-block:hover .map-placeholder { background: #222; }
+.map-placeholder svg { width: 52px; height: 52px; color: var(--p-light); margin-bottom: 0.5rem; }
+.map-placeholder-title { font-size: 1.2rem; font-weight: 700; color: var(--white); }
+.map-placeholder-sub { font-size: 0.88rem; color: rgba(255,255,255,0.5); }
+.map-placeholder-btn { margin-top: 1rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--p-light); border: 1px solid var(--p-light); padding: 0.6rem 1.4rem; transition: all 0.2s; }
+.map-link-block:hover .map-placeholder-btn { background: var(--p-light); color: var(--white); }
+
+/* TRANSLATE WIDGET */
+
+
+
+/* ── PURE CSS ANIMATIONS ── */
+
+/* Hero entrance - triggered on load */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes barGrow {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+@keyframes slideRight {
+  from { width: 0; }
+  to   { width: 48px; }
+}
+
+.hero-bar    { animation: barGrow 0.9s ease both; }
+.hero-tag    { animation: fadeUp 0.5s ease both 0.15s; }
+.hero-title  { animation: fadeUp 0.5s ease both 0.3s; }
+.hero-sub    { animation: fadeUp 0.5s ease both 0.45s; }
+.hero-actions { animation: fadeUp 0.5s ease both 0.6s; }
+.hero-stats  { animation: fadeIn 0.6s ease both 0.8s; }
+
+/* Section labels underline */
+.section-line { display: block; height: 2px; background: var(--p); width: 0; animation: slideRight 0.6s ease both 0.2s; }
+
+/* Cards - simple CSS scroll animation using animation-timeline */
+@supports (animation-timeline: scroll()) {
+  .card, .insight, .member {
+    animation: fadeUp 0.5s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 25%;
+  }
+  .nosotros-text {
+    animation: fadeUp 0.6s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+  .highlights {
+    animation: fadeUp 0.6s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+  .equipo-header, .insights-header, .areas-header {
+    animation: fadeUp 0.5s ease both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 20%;
+  }
+}
+
+/* Hover effects - cards */
+.card {
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+.card:hover .card-icon {
+  transform: scale(1.12);
+  transition: transform 0.2s;
+}
+.card-icon { transition: transform 0.2s; }
+
+/* Hover effects - insights */
+.insight { transition: background 0.2s, transform 0.2s; }
+.insight:hover { transform: translateY(-3px); }
+
+/* Hover effects - members */
+.member { transition: background 0.2s, transform 0.2s; }
+.member:hover { transform: translateY(-3px); }
+
+/* Hover effects - highlights */
+.hl:hover { background: rgba(255,255,255,0.5); }
+
+/* Nav underline on hover */
+.nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable) {
+  position: relative;
+}
+.nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 2px;
+  background: var(--p);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable):hover::after {
+  transform: scaleX(1);
+}
+
+/* Button press */
+.btn-solid:active, .btn-submit:active, .btn-nav-solid:active, .btn-nav-contable:active {
+  transform: scale(0.97);
+}
+
+/* Contact data hover */
+.cdata-item { transition: transform 0.2s; }
+.cdata-item:hover { transform: translateX(4px); }
+
+/* Map button hover */
+.map-placeholder-btn { transition: background 0.2s, color 0.2s; }
+
+.btn-solid, .btn-ghost, .btn-submit, .btn-nav-solid, .btn-nav-contable {
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-solid:active, .btn-submit:active, .btn-nav-solid:active, .btn-nav-contable:active {
+  transform: scale(0.97);
+}
+
+/* Area card icon rotate on hover */
+.card:hover .card-icon { transform: scale(1.15); transition: transform 0.3s cubic-bezier(.4,0,.2,1); }
+.card-icon { transition: transform 0.3s; }
+
+/* Contact data items */
+.cdata-item { transition: transform 0.3s; }
+.cdata-item:hover { transform: translateX(4px); }
+
+/* ── MINIMAL ANIMATIONS ── */
+
+/* Hero only - simple fade on load */
+@keyframes f { from { opacity:0; } to { opacity:1; } }
+@keyframes fu { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+.hero-tag    { animation: fu 0.4s ease both 0.1s; }
+.hero-title  { animation: fu 0.4s ease both 0.2s; }
+.hero-sub    { animation: fu 0.4s ease both 0.3s; }
+.hero-actions { animation: fu 0.4s ease both 0.4s; }
+.hero-stats  { animation: f 0.4s ease both 0.5s; }
+
+/* Subtle hover on cards - just background, no movement */
+.card { transition: background 0.15s; }
+.card:hover { background: var(--white); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+.insight { transition: background 0.15s; }
+.insight:hover { background: var(--off-white); }
+
+.member { transition: background 0.15s; }
+.member:hover { background: var(--off-white); }
+
+/* Nav hover underline */
+.nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable) { position: relative; }
+.nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable)::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: var(--p);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease;
+}
+.nav-links a:not(.btn-nav-solid):not(.btn-nav-outline):not(.btn-nav-contable):hover::after { transform: scaleX(1); }
+
+/* Button hover */
+.btn-solid:hover { background: var(--p-dark); }
+.btn-solid:active, .btn-submit:active { transform: scale(0.98); }
+
+/* Contact items */
+.cdata-item { transition: opacity 0.15s; }
+.cdata-item:hover { opacity: 0.8; }
+</style>
+</head>
+<body>
+
+<div class="mob" id="mob">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#nosotros" onclick="closeMob()">Nosotros</a>
+  <a href="#areas" onclick="closeMob()">Áreas</a>
+  <a href="#equipo" onclick="closeMob()">Equipo</a>
+  <a href="#insights" onclick="closeMob()">Novedades</a>
+  <a href="contable.html" style="color:var(--p);font-weight:700">Área Contable</a>
+  <a href="#contacto" onclick="closeMob()">Contacto</a>
+</div>
+
+<nav id="mainNav">
+  <a href="#inicio" class="logo">
+    <span class="logo-abbr">PL<span>B</span></span>
+    <div class="logo-sep"></div>
+    <span class="logo-name">Pantarotto Lértora Bardagí & Asocs.</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#areas">Áreas</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#insights">Novedades</a></li>
+    <li><a href="contable.html" class="btn-nav-contable">Área Contable</a></li>
+    <li><a href="#contacto" class="btn-nav-solid">Contacto</a></li>
+  </ul>
+  
+
+<button class="hamburger" onclick="openMob()"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="hero-grid"></div>
+  <div class="hero-bar"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Abogados · Buenos Aires</div>
+    <h1 class="hero-title">Derecho empresarial con <span class="accent">20 años</span><br>de trayectoria</h1>
+    <p class="hero-sub">Estudio integral con sede en Buenos Aires y corresponsales en Estados Unidos y Uruguay. Especializados en derecho tributario, aduanero, societario, laboral y aerocomercial.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-solid">Consultar ahora</a>
+      <a href="#areas" class="btn-ghost">Ver áreas de práctica</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">20<span>+</span></div><div class="stat-label">Años de experiencia</div></div>
+    <div><div class="stat-num">5</div><div class="stat-label">Áreas de práctica</div></div>
+    <div><div class="stat-num">3</div><div class="stat-label">Países de operación</div></div>
+  </div>
+</section>
+
+<section class="nosotros" id="nosotros">
+  <div class="nosotros-text">
+    <div class="label">El estudio</div><span class="section-line"></span>
+    <h2 class="section-title">Soluciones jurídicas integrales para el mundo de los negocios</h2>
+    <p>Pantarotto Lértora Bardagí & Asocs. es un estudio integral de abogados y contadores públicos con sede en la Ciudad de Buenos Aires, con más de 20 años de trayectoria en el asesoramiento a empresas nacionales e internacionales.</p>
+    <p>Nuestra práctica se centra en derecho económico empresarial, penal aduanero y tributario, societario, laboral, inversiones e impuestos, con especial desarrollo en las industrias de aviación aerocomercial, seguros, fintech e inmobiliaria.</p>
+    <p>Contamos con corresponsales en Estados Unidos y Uruguay, lo que nos permite acompañar a nuestros clientes en operaciones transfronterizas con la misma profundidad de análisis que en el mercado local.</p>
+  </div>
+  <div class="highlights">
+    <div class="hl"><div class="hl-num">20<span>+</span></div><div class="hl-text"><strong>Años de trayectoria</strong><p>Más de dos décadas acompañando a empresas en sus decisiones jurídicas más relevantes.</p></div></div>
+    <div class="hl"><div class="hl-num">3</div><div class="hl-text"><strong>Países de operación</strong><p>Argentina, Estados Unidos y Uruguay, con red de corresponsales activos en cada jurisdicción.</p></div></div>
+    <div class="hl"><div class="hl-num">5</div><div class="hl-text"><strong>Áreas especializadas</strong><p>Práctica profunda en tributario, aduanero, laboral, societario y aerocomercial.</p></div></div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="areas-header">
+    <div>
+      <div class="label">Práctica profesional</div><span class="section-line"></span>
+      <h2 class="section-title">Áreas de práctica</h2>
+      <p class="areas-sub">Asesoramiento especializado en las principales ramas del derecho corporativo y contencioso.</p>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="card"><svg class="card-icon" viewBox="0 0 28 28" fill="none" stroke="#1a4fa3" stroke-width="1.5"><rect x="3" y="3" width="22" height="22" rx="2"/><path d="M8 10h12M8 14h8M8 18h10"/></svg><div class="card-name">Tributario</div><p class="card-desc">Planificación fiscal, litigios ante el fisco, precios de transferencia, tributario internacional y reestructuraciones impositivas.</p></div>
+    <div class="card"><svg class="card-icon" viewBox="0 0 28 28" fill="none" stroke="#1a4fa3" stroke-width="1.5"><path d="M14 3L3 9v10l11 6 11-6V9z"/><path d="M14 3v22M3 9l11 6 11-6"/></svg><div class="card-name">Aduanero</div><p class="card-desc">Penal aduanero, comercio exterior, importación y exportación, infracciones y representación ante la AFIP-DGA.</p></div>
+    <div class="card"><svg class="card-icon" viewBox="0 0 28 28" fill="none" stroke="#1a4fa3" stroke-width="1.5"><circle cx="14" cy="10" r="5"/><path d="M5 24c0-5 4-8 9-8s9 3 9 8"/></svg><div class="card-name">Laboral</div><p class="card-desc">Relaciones individuales y colectivas de trabajo, negociación sindical, conflictos laborales y reestructuraciones de personal.</p></div>
+    <div class="card"><svg class="card-icon" viewBox="0 0 28 28" fill="none" stroke="#1a4fa3" stroke-width="1.5"><path d="M5 6h18v16H5z"/><path d="M10 6V4h8v2M9 13h10M9 17h6"/></svg><div class="card-name">Societario</div><p class="card-desc">Constitución y gobierno corporativo, fusiones y adquisiciones, due diligence, acuerdos de accionistas y transformaciones societarias.</p></div>
+    <div class="card"><svg class="card-icon" viewBox="0 0 28 28" fill="none" stroke="#1a4fa3" stroke-width="1.5"><path d="M4 20 Q10 8 14 12 Q18 16 24 4"/><circle cx="14" cy="12" r="2" fill="#1a4fa3"/><path d="M6 23h16"/></svg><div class="card-name">Aerocomercial</div><p class="card-desc">Derecho aeronáutico, contratos de aviación, regulación de aerolíneas, seguros aéreos y representación ante la ANAC.</p></div>
+    <div class="card"><svg class="card-icon" viewBox="0 0 28 28" fill="none" stroke="#1a4fa3" stroke-width="1.5"><rect x="4" y="8" width="20" height="14" rx="2"/><path d="M10 8V6a4 4 0 018 0v2"/><circle cx="14" cy="15" r="2"/></svg><div class="card-name">Penal Económico</div><p class="card-desc">Defensa penal en delitos económicos, lavado de activos, fraudes, corrupción corporativa y compliance penal preventivo.</p></div>
+  </div>
+</section>
+
+<section class="equipo" id="equipo">
+  <div class="equipo-header">
+    <div class="label">Equipo</div><span class="section-line"></span>
+    <h2 class="section-title">Nuestro equipo</h2>
+    <p style="color:var(--gray);font-size:0.95rem;margin-top:0.5rem;max-width:520px;">Un equipo multidisciplinario de abogados y contadores públicos con formación de excelencia y amplia trayectoria en sus respectivas especialidades.</p>
+  </div>
+  <div class="grid-team">
+    <div class="member"><div class="avatar" style="background:var(--p)">PL</div><div class="member-name">Pantarotto Lértora</div><div class="member-role">Socio</div><div class="member-spec">Área Tributaria · Penal Económico · Aduanero</div></div>
+    <div class="member"><div class="avatar" style="background:var(--dark2)">B</div><div class="member-name">Bardagí</div><div class="member-role">Socio</div><div class="member-spec">Área Aerocomercial · Administrativo Regulatorio</div></div>
+    <div class="member-cta"><div style="font-size:2rem;color:var(--gray-line);margin-bottom:1rem">+</div><p>Equipo completo de asociados y contadores públicos especializados</p><a href="https://pl-abogados.com/integrantes/" target="_blank" class="link-arr">Ver todos →</a></div>
+  </div>
+</section>
+
+<section class="insights" id="insights">
+  <div class="insights-header">
+    <div><div class="label">Publicaciones</div><span class="section-line"></span><h2 class="section-title">Novedades</h2></div>
+    <a href="https://pl-abogados.com/home/insights-2/" target="_blank" class="link-arr">Ver todos →</a>
+  </div>
+  <div class="grid-insights">
+    <div class="insight featured"><div class="insight-tag">Impuestos · Penal Económico</div><div class="insight-title">Acuerdo FATCA: intercambio automático de información financiera entre Argentina y Estados Unidos</div><p class="insight-excerpt">El acuerdo firmado en diciembre de 2022 establece el intercambio anual automático de datos entre la AFIP y el IRS, con consecuencias directas para contribuyentes con activos en ambas jurisdicciones.</p><div class="insight-date">Septiembre 2024</div></div>
+    <div class="insight"><div class="insight-tag">Derecho Aerocomercial</div><div class="insight-title">Resolución 516/ANAC/2024: nuevo límite de edad para pilotos</div><p class="insight-excerpt">La ANAC modificó el Art. 61.3(h) de las RAAC, elevando la edad máxima permitida para pilotos en actividad comercial.</p><div class="insight-date">Noviembre 2024</div></div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+
+  <!-- Top strip: dark background with title -->
+  <div class="contacto-top">
+    <div class="contacto-top-inner">
+      <div>
+        <div class="label" style="color:rgba(255,255,255,0.5)">Contacto</div><span class="section-line"></span>
+        <h2 class="section-title" style="color:var(--white)">Hablemos de <span style="color:var(--p-light)">su caso</span></h2>
+        <p style="color:rgba(255,255,255,0.9);font-size:0.95rem;margin-top:0.5rem;max-width:420px;line-height:1.75">Le ofrecemos una consulta inicial para evaluar su situación. Nuestro equipo le responderá dentro de las 24 horas hábiles.</p>
+      </div>
+      <div class="contacto-data">
+        <div class="cdata-item">
+          <div class="cdata-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2a6 6 0 016 6c0 4-6 10-6 10S4 12 4 8a6 6 0 016-6z"/><circle cx="10" cy="8" r="2"/></svg>
+          </div>
+          <div>
+            <div class="cdata-label">Dirección</div>
+            <div class="cdata-val">Av. Corrientes 1464, Piso 16 Of. 1605<br>C1042 · Ciudad Autónoma de Buenos Aires</div>
+          </div>
+        </div>
+        <div class="cdata-item">
+          <div class="cdata-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 7l8 5 8-5"/></svg>
+          </div>
+          <div>
+            <div class="cdata-label">Email</div>
+            <div class="cdata-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adcec2c3d9ccced9c2edddc180cccfc2caccc9c2de83cec2c0">[email&#160;protected]</a></div>
+          </div>
+        </div>
+        <div class="cdata-item">
+          <div class="cdata-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 2"/></svg>
+          </div>
+          <div>
+            <div class="cdata-label">Horario</div>
+            <div class="cdata-val">Lunes a viernes, 9:00 – 18:00 hs.</div>
+          </div>
+        </div>
+        <div class="cdata-item">
+          <div class="cdata-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M2 10h16M10 2a14 14 0 010 16M10 2a14 14 0 000 16"/></svg>
+          </div>
+          <div>
+            <div class="cdata-label">Sedes</div>
+            <div class="cdata-val">Buenos Aires · EEUU · Uruguay</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: map + form side by side -->
+  <div class="contacto-bottom">
+    <div class="contacto-map">
+      <a href="https://www.google.com/maps/search/?api=1&query=Av.+Corrientes+1464+Buenos+Aires" target="_blank" class="map-link-block">
+        <div class="map-placeholder">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M24 4a14 14 0 0114 14c0 10-14 26-14 26S10 28 10 18A14 14 0 0124 4z"/>
+            <circle cx="24" cy="18" r="5"/>
+          </svg>
+          <div class="map-placeholder-title">Av. Corrientes 1464</div>
+          <div class="map-placeholder-sub">Piso 16, Of. 1605 · CABA, Argentina</div>
+          <div class="map-placeholder-btn">Ver en Google Maps →</div>
+        </div>
+      </a>
+    </div>
+    <form class="contacto-form-new" onsubmit="handleForm(event)">
+      <div class="form-row">
+        <div class="form-group"><label>Nombre</label><input type="text" placeholder="Nombre completo"></div>
+        <div class="form-group"><label>Empresa</label><input type="text" placeholder="Empresa u organización"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Email</label><input type="email" placeholder="su@email.com"></div>
+        <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+54 11 0000-0000"></div>
+      </div>
+      <div class="form-group"><label>Área de consulta</label>
+        <select><option value="" disabled selected>Seleccione un área</option><option>Tributario</option><option>Aduanero</option><option>Laboral</option><option>Societario</option><option>Aerocomercial</option><option>Penal Económico</option><option>Otro</option></select>
+      </div>
+      <div class="form-group"><label>Mensaje</label><textarea placeholder="Describa brevemente su consulta…"></textarea></div>
+      <button type="submit" class="btn-submit">Enviar consulta</button>
+    </form>
+  </div>
+
+</section>
+
+
+<footer>
+  <div class="footer-top">
+    <div><div class="footer-logo">PL<span>B</span> & Asocs.</div><p class="footer-tagline">Pantarotto Lértora Bardagí & Asociados — Abogados & Contadores Públicos. Buenos Aires, Argentina.</p></div>
+    <div class="footer-col"><h4>El estudio</h4><ul><li><a href="#nosotros">Quiénes somos</a></li><li><a href="#equipo">Equipo</a></li><li><a href="contable.html">Área Contable</a></li><li><a href="https://pl-abogados.com/integrantes/" target="_blank">Corresponsales</a></li></ul></div>
+    <div class="footer-col"><h4>Práctica</h4><ul><li><a href="#areas">Tributario</a></li><li><a href="#areas">Aduanero</a></li><li><a href="#areas">Laboral</a></li><li><a href="#areas">Societario</a></li><li><a href="#areas">Aerocomercial</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Política de privacidad</a></li><li><a href="#">Términos de uso</a></li><li><a href="#">Disclaimer</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Pantarotto Lértora Bardagí & Asocs. Todos los derechos reservados.</span>
+    <div class="footer-social"><a href="https://www.linkedin.com/company/pl-abogados/" target="_blank">in</a><a href="#">𝕏</a></div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function openMob() { document.getElementById('mob').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeMob() { document.getElementById('mob').classList.remove('open'); document.body.style.overflow = ''; }
+function handleForm(e) { e.preventDefault(); const b = e.target.querySelector('.btn-submit'); b.textContent = 'Consulta enviada ✓'; b.style.background = '#2a6b2a'; b.disabled = true; }
+window.addEventListener('scroll', () => { document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60); });
+const obs = new
