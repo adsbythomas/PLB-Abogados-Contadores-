@@ -472,6 +472,12 @@ const i18n = {
 
 let currentLang = 'es';
 
+// Define toggleLang immediately so onclick can find it
+function toggleLang(e) {
+  e.stopPropagation();
+  document.getElementById('langMenu').classList.toggle('open');
+}
+
 function setLang(lang) {
   currentLang = lang;
   const t = i18n[lang];
@@ -511,10 +517,6 @@ function setLang(lang) {
   }
 })();
 
-function toggleLang(e) {
-  e.stopPropagation();
-  document.getElementById('langMenu').classList.toggle('open');
-}
 document.addEventListener('click', () => document.getElementById('langMenu').classList.remove('open'));
 function openMob() { document.getElementById('mob').classList.add('open'); document.body.style.overflow='hidden'; }
 function closeMob() { document.getElementById('mob').classList.remove('open'); document.body.style.overflow=''; }
