@@ -54,8 +54,8 @@ nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
 .stat-num span { color: var(--p); }
 .stat-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-light); margin-top: 0.2rem; }
 section { padding: 6rem 3.5rem; }
-.label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--p); margin-bottom: 0.75rem; }
-.section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--black); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+.label { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--p); margin-bottom: 0.2rem; }
+.section-title { font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 700; color: var(--black); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
 .nosotros { background: var(--bg); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .nosotros-text p { font-size: 0.95rem; color: var(--gray); line-height: 1.85; margin-bottom: 1rem; }
 .highlights { background: var(--white); border: 1px solid var(--gray-line); padding: 0 2rem; }
@@ -114,16 +114,16 @@ section { padding: 6rem 3.5rem; }
 .contacto-bottom { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
 .contacto-map { position: relative; min-height: 480px; }
 .contacto-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
-.contacto-form-new { display: flex; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--white); border-left: 1px solid var(--gray-line); }
+.contacto-form-new { display: flex; flex-direction: column; gap: 1rem; padding: 3rem; background: var(--black); border-left: 1px solid rgba(255,255,255,0.08); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-.form-group label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); }
-.form-group input, .form-group select, .form-group textarea { background: var(--white); border: 1px solid var(--gray-line); color: var(--black); font-family: Arial; font-size: 0.88rem; padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s; width: 100%; }
-.form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray-light); }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--p); }
+.form-group label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.form-group input, .form-group select, .form-group textarea { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.12); color: var(--white); font-family: Arial; font-size: 0.88rem; padding: 0.85rem 1rem; outline: none; transition: border-color 0.2s, background 0.2s; width: 100%; border-radius: 6px; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--p); background: #222; outline: none; }
 .form-group select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239b4a1e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
 .form-group textarea { resize: vertical; min-height: 120px; }
-.btn-submit { background: var(--p); color: var(--white); font-family: Arial; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border: none; padding: 0.9rem 2rem; cursor: pointer; align-self: flex-start; transition: background 0.2s; }
+.btn-submit { background: var(--p); color: var(--white); font-family: Arial; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; border: none; padding: 0.9rem 2.5rem; cursor: pointer; align-self: flex-start; transition: background 0.2s; border-radius: 4px; }
 .btn-submit:hover { background: var(--p-dark); }
 footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
 .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem; }
@@ -148,7 +148,7 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
 .hero-sub { animation: fadeUp 0.6s ease both 0.5s; }
 .hero-actions { animation: fadeUp 0.6s ease both 0.65s; }
 .hero-stats { animation: fadeIn 0.6s ease both 0.8s; }
-.section-line { display:block; height:2px; background:var(--p); width:0; animation: lineGrow 0.6s ease both 0.2s; }
+.section-line { display:none; }
 @supports (animation-timeline: scroll()) {
   .card, .insight, .member { animation: fadeUp 0.5s ease both; animation-timeline: view(); animation-range: entry 0% entry 22%; }
   .nosotros-text { animation: fadeUp 0.7s ease both; animation-timeline: view(); animation-range: entry 0% entry 28%; }
@@ -307,7 +307,7 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
 
 <section class="nosotros" id="nosotros">
   <div class="nosotros-text">
-    <div class="label" data-i18n="about.label">El área contable</div><span class="section-line"></span>
+    <div class="label" data-i18n="about.label">El área contable</div>
     <h2 class="section-title" data-i18n="about.title">Contabilidad y asesoramiento impositivo de excelencia</h2>
     <p data-i18n="about.p1">El área contable de Pantarotto Lértora Bardagí & Asocs. brinda servicios integrales de contabilidad, auditoría e impuestos para empresas de todos los tamaños y sectores, tanto en el mercado local como en operaciones internacionales.</p>
     <p data-i18n="about.p2">Trabajamos en estrecha coordinación con el área legal del estudio, lo que nos permite ofrecer soluciones unificadas ante situaciones que requieren abordaje jurídico y contable simultáneo: reestructuraciones, due diligence, conflictos fiscales o expansión internacional.</p>
@@ -323,7 +323,7 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
 <section class="areas" id="areas">
   <div class="areas-header">
     <div>
-      <div class="label" data-i18n="areas.label">Servicios contables</div><span class="section-line"></span>
+      <div class="label" data-i18n="areas.label">Servicios contables</div>
       <h2 class="section-title" data-i18n="areas.title">Áreas de servicio</h2>
       <p class="areas-sub" data-i18n="areas.sub">Cobertura completa de las necesidades contables e impositivas de su empresa.</p>
     </div>
@@ -340,7 +340,7 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
 
 <section class="equipo" id="equipo">
   <div class="equipo-header">
-    <div class="label" data-i18n="team.label">Nuestros contadores</div><span class="section-line"></span>
+    <div class="label" data-i18n="team.label">Nuestros contadores</div>
     <h2 class="section-title" data-i18n="team.title">El equipo</h2>
     <p style="color:var(--gray);font-size:0.95rem;margin-top:0.5rem;max-width:520px;" data-i18n="team.sub">Contadores públicos matriculados con especialización en impuestos, auditoría y contabilidad internacional, en permanente coordinación con el equipo legal del estudio.</p>
   </div>
@@ -353,7 +353,7 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
 
 <section class="insights" id="insights">
   <div class="insights-header">
-    <div><div class="label" data-i18n="news.label">Novedades contables</div><span class="section-line"></span><h2 class="section-title" data-i18n="news.title">Actualidad impositiva</h2></div>
+    <div><div class="label" data-i18n="news.label">Novedades contables</div><h2 class="section-title" data-i18n="news.title">Actualidad impositiva</h2></div>
     <a href="https://pl-abogados.com/home/insights-2/" target="_blank" class="link-arr" data-i18n="news.all">Ver todos →</a>
   </div>
   <div class="grid-insights">
@@ -366,7 +366,7 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
   <div class="contacto-top">
     <div class="contacto-top-inner">
       <div>
-        <div class="label" style="color:rgba(255,255,255,0.5)" data-i18n="contact.label">Contacto</div><span class="section-line"></span>
+        <div class="label" style="color:rgba(255,255,255,0.5)" data-i18n="contact.label">Contacto</div>
         <h2 class="section-title" style="color:var(--white)"><span data-i18n="contact.title">Hablemos de</span> <span style="color:var(--p-light)" data-i18n="contact.titleAccent">su situación</span></h2>
         <p style="color:rgba(255,255,255,0.9);font-size:0.95rem;margin-top:0.5rem;max-width:420px;line-height:1.75" data-i18n="contact.desc">Nuestro equipo contable le brinda una consulta inicial para evaluar sus necesidades y proponer el servicio más adecuado. Le responderemos dentro de las 24 horas hábiles.</p>
       </div>
