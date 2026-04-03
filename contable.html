@@ -422,7 +422,7 @@ footer { background: var(--black); padding: 3.5rem 3.5rem 2rem; }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 var currentLang = 'es';
 
 function toggleLang(e) {
@@ -474,7 +474,7 @@ function closeMob() { var m = document.getElementById('mob'); if (m) { m.classLi
 function handleForm(e) {
   e.preventDefault();
   var b = e.target.querySelector('.btn-submit');
-  var msgs = {es:'Consulta enviada ✓',en:'Inquiry sent ✓',pt:'Consulta enviada ✓',fr:'Demande envoyée ✓',it:'Richiesta inviata ✓',de:'Anfrage gesendet ✓'};
+  var msgs = {es:'Consulta enviada OK',en:'Inquiry sent OK',pt:'Consulta enviada OK',fr:'Demande envoyée OK',it:'Richiesta inviata OK',de:'Anfrage gesendet OK'};
   b.textContent = msgs[currentLang]||msgs.es; b.style.background='#2a6b2a'; b.disabled=true;
 }
 window.addEventListener('scroll', function() {
@@ -510,7 +510,7 @@ var i18n = {
     "news2.tag":"Normativa Contable","news2.title":"Actualizaciones en normas contables profesionales: impacto en la preparación de estados financieros","news2.excerpt":"Las modificaciones recientes en las RT de la FACPCE introducen nuevos criterios de medición y exposición que afectan a empresas de todos los sectores.","news2.date":"Octubre 2024",
     "contact.label":"Contacto","contact.title":"Hablemos de","contact.titleAccent":"su situación","contact.desc":"Nuestro equipo contable le brinda una consulta inicial para evaluar sus necesidades y proponer el servicio más adecuado. Le responderemos dentro de las 24 horas hábiles.",
     "contact.addr":"Dirección","contact.email":"Email","contact.hours":"Horario","contact.hoursVal":"Lunes a viernes, 9:00 – 18:00 hs.","contact.offices":"Sedes",
-    "form.name":"Nombre","form.namePh":"Nombre completo","form.company":"Empresa","form.companyPh":"Empresa u organización","form.phone":"Teléfono","form.area":"Servicio requerido","form.areaSelect":"Seleccione un servicio","form.other":"Otro","form.message":"Mensaje","form.messagePh":"Describa brevemente su consulta o necesidad…","form.submit":"Enviar consulta",
+    "form.name":"Nombre","form.namePh":"Nombre completo","form.company":"Empresa","form.companyPh":"Empresa u organización","form.phone":"Teléfono","form.area":"Servicio requerido","form.areaSelect":"Seleccione un servicio","form.other":"Otro","form.message":"Mensaje","form.messagePh":"Describa brevemente su consulta o necesidad...","form.submit":"Enviar consulta",
     "footer.tagline":"Pantarotto Lértora Bardagí & Asociados — Área Contable. Buenos Aires, Argentina.","footer.col1":"El área","footer.about":"Quiénes somos","footer.correspondents":"Corresponsales","footer.col2":"Servicios","footer.col3":"Legal","footer.privacy":"Política de privacidad","footer.terms":"Términos de uso","footer.copy":"© 2025 Pantarotto Lértora Bardagí & Asocs. Todos los derechos reservados."
   },
   en: {
@@ -533,7 +533,7 @@ var i18n = {
     "news2.tag":"Accounting Standards","news2.title":"Updates to professional accounting standards: impact on financial statement preparation","news2.excerpt":"Recent amendments to the FACPCE's technical standards introduce new measurement and disclosure criteria affecting companies across all sectors.","news2.date":"October 2024",
     "contact.label":"Contact","contact.title":"Let's talk about","contact.titleAccent":"your situation","contact.desc":"Our accounting team offers a free initial consultation to assess your needs. We will respond within 24 business hours.",
     "contact.addr":"Address","contact.email":"Email","contact.hours":"Hours","contact.hoursVal":"Monday to Friday, 9:00 AM – 6:00 PM","contact.offices":"Offices",
-    "form.name":"Name","form.namePh":"Full name","form.company":"Company","form.companyPh":"Company or organization","form.phone":"Phone","form.area":"Service required","form.areaSelect":"Select a service","form.other":"Other","form.message":"Message","form.messagePh":"Briefly describe your inquiry…","form.submit":"Send inquiry",
+    "form.name":"Name","form.namePh":"Full name","form.company":"Company","form.companyPh":"Company or organization","form.phone":"Phone","form.area":"Service required","form.areaSelect":"Select a service","form.other":"Other","form.message":"Message","form.messagePh":"Briefly describe your inquiry...","form.submit":"Send inquiry",
     "footer.tagline":"Pantarotto Lértora Bardagí & Associates — Accounting Division. Buenos Aires, Argentina.","footer.col1":"The division","footer.about":"About us","footer.correspondents":"Correspondents","footer.col2":"Services","footer.col3":"Legal","footer.privacy":"Privacy policy","footer.terms":"Terms of use","footer.copy":"© 2025 Pantarotto Lértora Bardagí & Asocs. All rights reserved."
   },
   pt: {
@@ -550,7 +550,7 @@ var i18n = {
     "news2.tag":"Normas Contábeis","news2.title":"Atualizações nas normas contábeis profissionais: impacto na elaboração de demonstrações financeiras","news2.excerpt":"As modificações nas RT da FACPCE introduzem novos critérios de mensuração e divulgação.","news2.date":"Outubro 2024",
     "contact.label":"Contato","contact.title":"Vamos falar sobre","contact.titleAccent":"a sua situação","contact.desc":"Nossa equipe contábil oferece uma consulta inicial gratuita. Responderemos dentro de 24 horas úteis.",
     "contact.addr":"Endereço","contact.email":"E-mail","contact.hours":"Horário","contact.hoursVal":"Segunda a sexta, 9h – 18h","contact.offices":"Escritórios",
-    "form.name":"Nome","form.namePh":"Nome completo","form.company":"Empresa","form.companyPh":"Empresa ou organização","form.phone":"Telefone","form.area":"Serviço requerido","form.areaSelect":"Selecione um serviço","form.other":"Outro","form.message":"Mensagem","form.messagePh":"Descreva brevemente sua consulta…","form.submit":"Enviar consulta",
+    "form.name":"Nome","form.namePh":"Nome completo","form.company":"Empresa","form.companyPh":"Empresa ou organização","form.phone":"Telefone","form.area":"Serviço requerido","form.areaSelect":"Selecione um serviço","form.other":"Outro","form.message":"Mensagem","form.messagePh":"Descreva brevemente sua consulta...","form.submit":"Enviar consulta",
     "footer.tagline":"Pantarotto Lértora Bardagí & Associados — Área Contábil. Buenos Aires, Argentina.","footer.col1":"A área","footer.about":"Quem somos","footer.correspondents":"Correspondentes","footer.col2":"Serviços","footer.col3":"Legal","footer.privacy":"Política de privacidade","footer.terms":"Termos de uso","footer.copy":"© 2025 Pantarotto Lértora Bardagí & Asocs. Todos os direitos reservados."
   },
   fr: {
@@ -567,7 +567,7 @@ var i18n = {
     "news2.tag":"Normes Comptables","news2.title":"Mises à jour des normes comptables professionnelles : impact sur l'établissement des états financiers","news2.excerpt":"Les récentes modifications des normes techniques de la FACPCE introduisent de nouveaux critères d'évaluation.","news2.date":"Octobre 2024",
     "contact.label":"Contact","contact.title":"Parlons de","contact.titleAccent":"votre situation","contact.desc":"Notre équipe comptable vous offre une consultation initiale gratuite. Nous vous répondrons dans les 24 heures ouvrables.",
     "contact.addr":"Adresse","contact.email":"E-mail","contact.hours":"Horaires","contact.hoursVal":"Lundi au vendredi, 9h – 18h","contact.offices":"Bureaux",
-    "form.name":"Nom","form.namePh":"Nom complet","form.company":"Entreprise","form.companyPh":"Entreprise ou organisation","form.phone":"Téléphone","form.area":"Service requis","form.areaSelect":"Sélectionnez un service","form.other":"Autre","form.message":"Message","form.messagePh":"Décrivez brièvement votre demande…","form.submit":"Envoyer la demande",
+    "form.name":"Nom","form.namePh":"Nom complet","form.company":"Entreprise","form.companyPh":"Entreprise ou organisation","form.phone":"Téléphone","form.area":"Service requis","form.areaSelect":"Sélectionnez un service","form.other":"Autre","form.message":"Message","form.messagePh":"Décrivez brièvement votre demande...","form.submit":"Envoyer la demande",
     "footer.tagline":"Pantarotto Lértora Bardagí & Associés — Division Comptable. Buenos Aires, Argentine.","footer.col1":"La division","footer.about":"Qui sommes-nous","footer.correspondents":"Correspondants","footer.col2":"Services","footer.col3":"Juridique","footer.privacy":"Politique de confidentialité","footer.terms":"Conditions d'utilisation","footer.copy":"© 2025 Pantarotto Lértora Bardagí & Asocs. Tous droits réservés."
   },
   it: {
@@ -584,7 +584,7 @@ var i18n = {
     "news2.tag":"Principi Contabili","news2.title":"Aggiornamenti ai principi contabili professionali: impatto sulla redazione dei bilanci","news2.excerpt":"Le recenti modifiche alle norme tecniche della FACPCE introducono nuovi criteri di valutazione e presentazione.","news2.date":"Ottobre 2024",
     "contact.label":"Contatto","contact.title":"Parliamo della","contact.titleAccent":"vostra situazione","contact.desc":"Il nostro team contabile offre una consulenza iniziale gratuita. Risponderemo entro 24 ore lavorative.",
     "contact.addr":"Indirizzo","contact.email":"E-mail","contact.hours":"Orario","contact.hoursVal":"Lunedì–venerdì, 9:00 – 18:00","contact.offices":"Uffici",
-    "form.name":"Nome","form.namePh":"Nome completo","form.company":"Azienda","form.companyPh":"Azienda o organizzazione","form.phone":"Telefono","form.area":"Servizio richiesto","form.areaSelect":"Seleziona un servizio","form.other":"Altro","form.message":"Messaggio","form.messagePh":"Descrivi brevemente la tua richiesta…","form.submit":"Invia richiesta",
+    "form.name":"Nome","form.namePh":"Nome completo","form.company":"Azienda","form.companyPh":"Azienda o organizzazione","form.phone":"Telefono","form.area":"Servizio richiesto","form.areaSelect":"Seleziona un servizio","form.other":"Altro","form.message":"Messaggio","form.messagePh":"Descrivi brevemente la tua richiesta...","form.submit":"Invia richiesta",
     "footer.tagline":"Pantarotto Lértora Bardagí & Associati — Area Contabile. Buenos Aires, Argentina.","footer.col1":"L'area","footer.about":"Chi siamo","footer.correspondents":"Corrispondenti","footer.col2":"Servizi","footer.col3":"Legale","footer.privacy":"Informativa sulla privacy","footer.terms":"Termini di utilizzo","footer.copy":"© 2025 Pantarotto Lértora Bardagí & Asocs. Tutti i diritti riservati."
   },
   de: {
@@ -601,7 +601,7 @@ var i18n = {
     "news2.tag":"Rechnungslegungsstandards","news2.title":"Aktualisierungen der professionellen Rechnungslegungsstandards: Auswirkungen auf die Erstellung von Jahresabschlüssen","news2.excerpt":"Die jüngsten Änderungen an den technischen Normen der FACPCE führen neue Bewertungskriterien ein.","news2.date":"Oktober 2024",
     "contact.label":"Kontakt","contact.title":"Sprechen wir über","contact.titleAccent":"Ihre Situation","contact.desc":"Unser Buchhaltungsteam bietet eine kostenlose Erstberatung. Wir antworten innerhalb von 24 Geschäftsstunden.",
     "contact.addr":"Adresse","contact.email":"E-Mail","contact.hours":"Öffnungszeiten","contact.hoursVal":"Montag–Freitag, 9:00 – 18:00 Uhr","contact.offices":"Büros",
-    "form.name":"Name","form.namePh":"Vollständiger Name","form.company":"Unternehmen","form.companyPh":"Unternehmen oder Organisation","form.phone":"Telefon","form.area":"Gewünschter Service","form.areaSelect":"Service auswählen","form.other":"Sonstiges","form.message":"Nachricht","form.messagePh":"Beschreiben Sie kurz Ihre Anfrage…","form.submit":"Anfrage senden",
+    "form.name":"Name","form.namePh":"Vollständiger Name","form.company":"Unternehmen","form.companyPh":"Unternehmen oder Organisation","form.phone":"Telefon","form.area":"Gewünschter Service","form.areaSelect":"Service auswählen","form.other":"Sonstiges","form.message":"Nachricht","form.messagePh":"Beschreiben Sie kurz Ihre Anfrage...","form.submit":"Anfrage senden",
     "footer.tagline":"Pantarotto Lértora Bardagí & Partner — Buchhaltungsabteilung. Buenos Aires, Argentinien.","footer.col1":"Die Abteilung","footer.about":"Über uns","footer.correspondents":"Korrespondenten",stungen","footer.col3":"Rechtliches","footer.privacy":"Datenschutzrichtlinie","footer.terms":"Nutzungsbedingungen","footer.copy":"© 2025 Pantarotto Lértora Bardagí & Asocs. Alle Rechte vorbehalten."
   }
 };
