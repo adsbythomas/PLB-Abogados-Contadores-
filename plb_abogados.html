@@ -81,7 +81,7 @@ section{padding:6rem 3.5rem}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-line);border:1px solid var(--gray-line)}
 .card{background:#dddddd;padding:2.25rem 2rem;position:relative;transition:background 0.2s,transform 0.25s,box-shadow 0.25s}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--p);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
-.card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,0.09)}
+.card:hover{transform:translateY(-5px);}
 .card:hover::before{transform:scaleX(1)}
 .card-icon{width:28px;height:28px;margin-bottom:1.25rem;transition:transform 0.25s}
 .card:hover .card-icon{transform:scale(1.15)}
@@ -345,6 +345,28 @@ footer .footer-social a { color: var(--gray) !important; border-color: var(--gra
 }
 .contacto-map iframe { opacity: 0; transition: opacity 0.8s ease; }
 .contacto-map iframe.loaded { opacity: 1; }
+
+/* Remove all section backgrounds */
+.nosotros, .areas, .equipo, .insights, .contacto,
+.highlights, .grid-3, .card, .member, .member-cta,
+.contacto-form-new, .contacto-bottom, .contacto-top,
+.grid-team, .grid-insights, .insight {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+/* Keep form inputs visible */
+.form-group input, .form-group select, .form-group textarea {
+  background: rgba(255,255,255,0.9) !important;
+  border: 1px solid var(--gray-line) !important;
+}
+/* Keep carousel cards visible */
+.carousel-card {
+  background: rgba(255,255,255,0.85) !important;
+  border: 1px solid var(--gray-line) !important;
+}
+/* Keep member avatars */
+.avatar { background: var(--p) !important; }
 </style>
 </head>
 <body>
