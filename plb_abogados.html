@@ -135,7 +135,7 @@ section{padding:6rem 3.5rem}
 .btn-submit{background:var(--p);color:var(--white);font-family:Arial;font-size:0.75rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:none;padding:0.9rem 2rem;cursor:pointer;align-self:flex-start;transition:background 0.2s}
 .btn-submit:hover{background:var(--p-dark)}
 footer{background:transparent;padding:3.5rem 3.5rem 2rem}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem}
+.footer-top{display:flex;justify-content:center;padding-bottom:2rem;border-bottom:1px solid var(--gray-line);margin-bottom:2rem;text-align:center}
 .footer-logo{font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.75rem}
 .footer-logo span{color:var(--p-light)}
 .footer-tagline{font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.7;max-width:240px}
@@ -485,7 +485,7 @@ footer .footer-social a { color: var(--gray) !important; border-color: var(--gra
         <div class="loader-person" id="loaderPerson">🚶</div>
       </div>
     </div>
-      <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9973518279826!2d-58.390031323855155!3d-34.60422847295404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac1942fc08d%3A0x90e50a4d7964f611!2sPantarotto%20L%C3%A9rtora%20%26%20Asocs!5e0!3m2!1ses-419!2sar!4v1775170188725!5m2!1ses-419!2sar" width="100%" height="100%" style="border:0;min-height:480px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <iframe class="map-iframe" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9973518279826!2d-58.390031323855155!3d-34.60422847295404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac1942fc08d%3A0x90e50a4d7964f611!2sPantarotto%20L%C3%A9rtora%20%26%20Asocs!5e0!3m2!1ses-419!2sar!4v1775170188725!5m2!1ses-419!2sar" src="" width="100%" height="100%" style="border:0;min-height:480px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     <form class="contacto-form-new" onsubmit="handleForm(event)">
       <div class="form-row">
         <div class="form-group"><label data-i18n="form.name">Nombre</label><input type="text" data-i18n-placeholder="form.namePh" placeholder="Nombre completo"></div>
@@ -506,10 +506,7 @@ footer .footer-social a { color: var(--gray) !important; border-color: var(--gra
 <footer>
   <div class="footer-top">
     <div><div class="footer-logo">PL<span>B</span> & Asocs.</div><p class="footer-tagline" data-i18n="footer.tagline">Pantarotto Lértora Bardagí & Asociados — Abogados & Contadores Públicos. Buenos Aires, Argentina.</p></div>
-    <div class="footer-col"><h4 data-i18n="footer.col1">El estudio</h4><ul><li><a href="#nosotros" data-i18n="footer.about">Quiénes somos</a></li><li><a href="#equipo" data-i18n="nav.team">Equipo</a></li><li><a href="contable.html" data-i18n="nav.accounting">Área Contable</a></li><li><a href="https://pl-abogados.com/integrantes/" target="_blank" data-i18n="footer.correspondents">Corresponsales</a></li></ul></div>
-    <div class="footer-col"><h4 data-i18n="footer.col2">Práctica</h4><ul><li><a href="#areas" data-i18n="area1.name">Tributario</a></li><li><a href="#areas" data-i18n="area2.name">Aduanero</a></li><li><a href="#areas" data-i18n="area3.name">Laboral</a></li><li><a href="#areas" data-i18n="area4.name">Societario</a></li><li><a href="#areas" data-i18n="area5.name">Aerocomercial</a></li></ul></div>
-    <div class="footer-col"><h4 data-i18n="footer.col3">Legal</h4><ul><li><a href="#" data-i18n="footer.privacy">Política de privacidad</a></li><li><a href="#" data-i18n="footer.terms">Términos de uso</a></li><li><a href="#">Disclaimer</a></li><li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li></ul></div>
-  </div>
+    </div>
   <div class="footer-bottom">
     <span data-i18n="footer.copy">© 2025 Pantarotto Lértora Bardagí & Asocs. Todos los derechos reservados.</span>
     <div class="footer-social"><a href="https://www.linkedin.com/company/pl-abogados/" target="_blank">in</a><a href="#">𝕏</a></div>
@@ -649,6 +646,64 @@ carouselAuto = setInterval(function() { carouselMove(1); }, 5000);
       iframe.classList.add('loaded');
     }, 400);
   });
+})();
+
+
+// Map loader - trigger when map enters viewport
+(function() {
+  var section = document.querySelector('.contacto-map');
+  var bar = document.getElementById('loaderBar');
+  var person = document.getElementById('loaderPerson');
+  var loader = document.getElementById('mapLoader');
+  var iframe = document.querySelector('.map-iframe');
+  if (!section || !bar || !loader || !iframe) return;
+
+  var started = false;
+
+  function startLoader() {
+    if (started) return;
+    started = true;
+
+    // Start filling the bar
+    var progress = 0;
+    var interval = setInterval(function() {
+      if (progress < 85) {
+        progress += Math.random() * 6 + 2;
+        if (progress > 85) progress = 85;
+        bar.style.width = progress + '%';
+        person.style.left = progress + '%';
+      }
+    }, 150);
+
+    // Load the map by setting src
+    var src = iframe.getAttribute('data-src');
+    if (src) iframe.src = src;
+
+    iframe.addEventListener('load', function() {
+      clearInterval(interval);
+      progress = 100;
+      bar.style.width = '100%';
+      person.style.left = '100%';
+      person.textContent = '🏃';
+      setTimeout(function() {
+        loader.classList.add('hidden');
+        iframe.classList.add('loaded');
+      }, 500);
+    });
+  }
+
+  // Use IntersectionObserver to trigger when map is visible
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        startLoader();
+        obs.disconnect();
+      }
+    }, { threshold: 0.1 });
+    obs.observe(section);
+  } else {
+    startLoader();
+  }
 })();
 
 </script>
