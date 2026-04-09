@@ -152,7 +152,10 @@ function filterInsights(cat) {
 
 function renderGrid() {
   var grid = document.getElementById('insightsGrid');
-  var filtered = activeFilter === 'all' ? insights : insights.filter(function(i) { return i.cat.indexOf(activeFilter) > -1; });
+  var filtered = activeFilter === 'all' ? insights : insights.filter(function(i) { 
+    var cats = i.cat.split(' · ');
+    return cats.some(function(c) { return c.trim() === activeFilter; });
+  });
   if (filtered.length === 0) {
     grid.innerHTML = '<div class="no-results" style="grid-column:1/-1">No hay publicaciones en esta categoría.</div>';
     return;
