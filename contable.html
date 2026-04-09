@@ -384,6 +384,77 @@ body { padding-left: 3.5rem !important; padding-right: 3.5rem !important; }
   border: 1px solid var(--gray-line) !important;
 }
 .avatar { background: var(--p) !important; }
+
+/* ── VUELTA DE GRACIA CONTABLE ── */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap');
+
+.hero-title, .section-title, .hero-firm {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  letter-spacing: -0.02em;
+}
+.hero-title { font-size: clamp(3rem, 6vw, 5rem) !important; }
+.section-title { font-size: clamp(2.2rem, 4vw, 3.5rem) !important; }
+
+.hero-tag {
+  position: relative;
+  padding-bottom: 1rem !important;
+}
+.hero-tag::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--p);
+}
+
+.label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.label::before {
+  content: attr(data-num);
+  font-size: 3.5rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700;
+  color: rgba(0,0,0,0.06);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.card:hover .card-name {
+  color: var(--p) !important;
+  transition: color 0.2s;
+}
+.card-name { transition: color 0.2s; }
+
+.avatar {
+  background: transparent !important;
+  border: 2px solid var(--p) !important;
+  color: var(--p) !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.hl-num, .stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 3.5rem !important;
+  font-weight: 700 !important;
+}
+
+.nav-links a {
+  letter-spacing: 0.14em !important;
+  font-size: 0.68rem !important;
+}
+
+section {
+  border-top: 1px solid rgba(0,0,0,0.08) !important;
+}
 </style>
 </head>
 <body>
@@ -487,7 +558,7 @@ body { padding-left: 3.5rem !important; padding-right: 3.5rem !important; }
 
 <section class="equipo" id="equipo">
   <div class="equipo-header">
-    <div class="label" data-i18n="team.label">Nuestros contadores</div>
+    <div class="label" data-i18n="team.label" data-num="03">Nuestros contadores</div>
     <h2 class="section-title" data-i18n="team.title">El equipo</h2>
     <p style="color:var(--gray);font-size:0.95rem;margin-top:0.5rem;max-width:520px;" data-i18n="team.sub">Contadores públicos matriculados con especialización en impuestos, auditoría y contabilidad internacional, en permanente coordinación con el equipo legal del estudio.</p>
   </div>
@@ -500,7 +571,7 @@ body { padding-left: 3.5rem !important; padding-right: 3.5rem !important; }
 
 <section class="insights" id="insights">
   <div class="insights-header">
-    <div><div class="label" data-i18n="news.label">Novedades contables</div><h2 class="section-title" data-i18n="news.title">Actualidad impositiva</h2></div>
+    <div><div class="label" data-i18n="news.label" data-num="04">Novedades contables</div><h2 class="section-title" data-i18n="news.title">Actualidad impositiva</h2></div>
     <a href="novedades-contable.html" class="link-arr" data-i18n="news.all">Ver todos →</a>
   </div>
   <div class="carousel-wrap">
