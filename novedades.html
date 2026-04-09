@@ -72,6 +72,34 @@ footer a { color: var(--p); text-decoration: none; }
   nav { padding: 0 1.5rem; }
   .insights-grid { grid-template-columns: 1fr; }
 }
+
+/* ── VUELTA DE GRACIA ── */
+.hero-tag {
+  position: relative;
+  padding-bottom: 1rem !important;
+}
+.hero-tag::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--p);
+}
+.label { display: flex; align-items: baseline; gap: 0.75rem; }
+.label::before {
+  content: attr(data-num);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.06);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.insight-card:hover .insight-title { color: var(--p) !important; }
+.insight-title { transition: color 0.2s; }
+section, main { border-top: 1px solid rgba(0,0,0,0.08); }
 </style>
 </head>
 <body>
