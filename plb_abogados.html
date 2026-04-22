@@ -664,35 +664,35 @@ body {
   z-index: 2;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 .hero-traffic .car {
   position: absolute;
   bottom: 0;
-  width: 56px;
-  height: 22px;
+  width: 64px;
+  height: 18px;
   will-change: transform;
 }
 .hero-traffic .car svg { display: block; width: 100%; height: 100%; }
 @keyframes carDriveRight {
-  from { transform: translateX(-80px); }
-  to   { transform: translateX(calc(100vw + 80px)); }
+  from { transform: translateX(-90px); }
+  to   { transform: translateX(calc(100vw + 90px)); }
 }
 @keyframes carDriveLeft {
-  from { transform: translateX(calc(100vw + 80px)) scaleX(-1); }
-  to   { transform: translateX(-80px) scaleX(-1); }
+  from { transform: translateX(calc(100vw + 90px)) scaleX(-1); }
+  to   { transform: translateX(-90px) scaleX(-1); }
 }
-.hero-traffic .car-1 { animation: carDriveRight 22s linear infinite;        animation-delay: 0s;  bottom: 0; }
-.hero-traffic .car-2 { animation: carDriveRight 17s linear infinite;        animation-delay: -8s; bottom: 0; }
-.hero-traffic .car-3 { animation: carDriveRight 28s linear infinite;        animation-delay: -16s; bottom: 0; }
-.hero-traffic .car-4 { animation: carDriveLeft  20s linear infinite;        animation-delay: -4s; bottom: 36px; }
-.hero-traffic .car-5 { animation: carDriveLeft  25s linear infinite;        animation-delay: -14s; bottom: 36px; }
+.hero-traffic .car-1 { animation: carDriveRight 26s linear infinite;        animation-delay: 0s;   bottom: 0; }
+.hero-traffic .car-2 { animation: carDriveRight 21s linear infinite;        animation-delay: -10s; bottom: 0; }
+.hero-traffic .car-3 { animation: carDriveRight 32s linear infinite;        animation-delay: -19s; bottom: 0; }
+.hero-traffic .car-4 { animation: carDriveLeft  24s linear infinite;        animation-delay: -5s;  bottom: 28px; }
+.hero-traffic .car-5 { animation: carDriveLeft  29s linear infinite;        animation-delay: -16s; bottom: 28px; }
 @media (prefers-reduced-motion: reduce) {
   .hero-traffic { display: none; }
 }
 @media (max-width: 768px) {
-  .hero-traffic { bottom: 12px; opacity: 0.55; }
-  .hero-traffic .car { width: 42px; height: 17px; }
+  .hero-traffic { bottom: 12px; opacity: 0.4; }
+  .hero-traffic .car { width: 48px; height: 14px; }
   .hero-traffic .car-4, .hero-traffic .car-5 { display: none; }
 }
 
@@ -1010,11 +1010,11 @@ textarea:focus-visible {
     </g>
   </svg>
   <div class="hero-traffic" aria-hidden="true">
-    <div class="car car-1"><svg viewBox="0 0 60 25"><path d="M5 21 V14 Q5 12 7 12 L18 12 L23 5 L37 5 L42 12 L53 12 Q55 12 55 14 V21 Z" fill="#1a4fa3"/><circle cx="14" cy="22" r="3" fill="#222"/><circle cx="46" cy="22" r="3" fill="#222"/></svg></div>
-    <div class="car car-2"><svg viewBox="0 0 60 25"><path d="M3 21 V13 Q3 11 5 11 L20 11 L24 4 L40 4 L45 11 L55 11 Q57 11 57 13 V21 Z" fill="#5a5a5a"/><circle cx="13" cy="22" r="3" fill="#222"/><circle cx="47" cy="22" r="3" fill="#222"/></svg></div>
-    <div class="car car-3"><svg viewBox="0 0 60 25"><path d="M5 21 V13 Q5 11 7 11 L17 11 L22 6 L38 6 L43 11 L53 11 Q55 11 55 13 V21 Z" fill="#b8923a"/><circle cx="14" cy="22" r="3" fill="#222"/><circle cx="46" cy="22" r="3" fill="#222"/></svg></div>
-    <div class="car car-4"><svg viewBox="0 0 60 25"><path d="M5 21 V13 Q5 11 7 11 L18 11 L22 5 L38 5 L42 11 L53 11 Q55 11 55 13 V21 Z" fill="#9b4a1e"/><circle cx="14" cy="22" r="3" fill="#222"/><circle cx="46" cy="22" r="3" fill="#222"/></svg></div>
-    <div class="car car-5"><svg viewBox="0 0 60 25"><path d="M4 21 V13 Q4 11 6 11 L19 11 L23 5 L39 5 L43 11 L54 11 Q56 11 56 13 V21 Z" fill="#2d6bc4"/><circle cx="13" cy="22" r="3" fill="#222"/><circle cx="47" cy="22" r="3" fill="#222"/></svg></div>
+    <div class="car car-1"><svg viewBox="0 0 80 22"><path d="M4 18 V13 Q4 12 5 12 L11 12 L17 5 L60 5 L68 12 L75 12 Q76 12 76 13 V18 Z" fill="#2a2a2a"/><line x1="34" y1="6" x2="34" y2="12" stroke="#0a0a0a" stroke-width="0.8"/><circle cx="14" cy="19" r="2.6" fill="#111"/><circle cx="64" cy="19" r="2.6" fill="#111"/></svg></div>
+    <div class="car car-2"><svg viewBox="0 0 80 22"><path d="M4 18 V13 Q4 12 5 12 L11 12 L17 5 L60 5 L68 12 L75 12 Q76 12 76 13 V18 Z" fill="#2a2a2a"/><line x1="34" y1="6" x2="34" y2="12" stroke="#0a0a0a" stroke-width="0.8"/><circle cx="14" cy="19" r="2.6" fill="#111"/><circle cx="64" cy="19" r="2.6" fill="#111"/></svg></div>
+    <div class="car car-3"><svg viewBox="0 0 80 22"><path d="M4 18 V13 Q4 12 5 12 L11 12 L17 5 L60 5 L68 12 L75 12 Q76 12 76 13 V18 Z" fill="#2a2a2a"/><line x1="34" y1="6" x2="34" y2="12" stroke="#0a0a0a" stroke-width="0.8"/><circle cx="14" cy="19" r="2.6" fill="#111"/><circle cx="64" cy="19" r="2.6" fill="#111"/></svg></div>
+    <div class="car car-4"><svg viewBox="0 0 80 22"><path d="M4 18 V13 Q4 12 5 12 L11 12 L17 5 L60 5 L68 12 L75 12 Q76 12 76 13 V18 Z" fill="#2a2a2a"/><line x1="34" y1="6" x2="34" y2="12" stroke="#0a0a0a" stroke-width="0.8"/><circle cx="14" cy="19" r="2.6" fill="#111"/><circle cx="64" cy="19" r="2.6" fill="#111"/></svg></div>
+    <div class="car car-5"><svg viewBox="0 0 80 22"><path d="M4 18 V13 Q4 12 5 12 L11 12 L17 5 L60 5 L68 12 L75 12 Q76 12 76 13 V18 Z" fill="#2a2a2a"/><line x1="34" y1="6" x2="34" y2="12" stroke="#0a0a0a" stroke-width="0.8"/><circle cx="14" cy="19" r="2.6" fill="#111"/><circle cx="64" cy="19" r="2.6" fill="#111"/></svg></div>
   </div>
   <div class="hero-content">
     <div class="hero-firm">PL<span style="color:var(--p)">B</span></div>
