@@ -2,8 +2,33 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PLB | Novedades Contables</title>
+<title>PLB Contable | Novedades Impositivas — Actualidad contable y fiscal</title>
+<meta name="description" content="Novedades contables e impositivas de Pantarotto Lértora Bardagí & Asocs. — Publicaciones del área contable sobre régimen tributario, aduanero, AFIP, FATCA y medidas fiscales en Argentina.">
+<meta name="keywords" content="novedades impositivas, novedades contables, AFIP, régimen tributario, FATCA, Ley 27743, aduanero, Pantarotto Lértora Bardagí">
+<meta name="author" content="Pantarotto Lértora Bardagí & Asocs.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#9b4a1e">
+<link rel="canonical" href="https://pl-abogados.com/novedades-contable.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%239b4a1e'/><text x='50%25' y='55%25' font-family='Arial,Helvetica,sans-serif' font-size='28' font-weight='700' text-anchor='middle' dominant-baseline='middle' fill='%23ffffff' letter-spacing='-1'>PLB</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%239b4a1e'/><text x='50%25' y='55%25' font-family='Arial,Helvetica,sans-serif' font-size='28' font-weight='700' text-anchor='middle' dominant-baseline='middle' fill='%23ffffff' letter-spacing='-1'>PLB</text></svg>">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pantarotto Lértora Bardagí & Asocs.">
+<meta property="og:title" content="PLB Contable | Novedades Impositivas">
+<meta property="og:description" content="Publicaciones del área contable: actualidad impositiva, aduanera, AFIP, FATCA y medidas fiscales en Argentina.">
+<meta property="og:url" content="https://pl-abogados.com/novedades-contable.html">
+<meta property="og:locale" content="es_AR">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PLB Contable | Novedades Impositivas">
+<meta name="twitter:description" content="Publicaciones del área contable: actualidad impositiva, aduanera, AFIP, FATCA y medidas fiscales.">
+
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -96,12 +121,98 @@ main { padding-top: 6rem; padding-bottom: 6rem; }
 }
 .insight-card:hover .insight-title { color: var(--p) !important; }
 .insight-title { transition: color 0.2s; }
+
+/* ── Accessibility: skip-link & focus states ── */
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--p); color: #fff !important;
+  padding: 0.75rem 1.25rem; font-weight: 700; text-decoration: none;
+  z-index: 1000; border-radius: 0 0 4px 0;
+}
+.skip-link:focus { left: 0; outline: 3px solid #d4af37; outline-offset: 2px; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--p); outline-offset: 2px; border-radius: 2px;
+}
+
+/* ── Site footer ── */
+.site-footer {
+  margin-top: 4rem;
+  border-top: 1px solid var(--gray-line);
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+.site-footer a { color: var(--gray); text-decoration: none; transition: color 0.2s; }
+.site-footer a:hover { color: var(--p); }
+.footer-legal { display: flex; gap: 0.75rem; align-items: center; }
+.footer-legal span { color: var(--gray-line); }
+@media (max-width: 640px) { .site-footer { justify-content: center; text-align: center; } }
+
+/* ── WhatsApp floating CTA ── */
+.wa-cta {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 90;
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  background: #25d366; color: #fff !important; text-decoration: none;
+  padding: 0.85rem 1.1rem 0.85rem 0.95rem; border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.35), 0 2px 6px rgba(0,0,0,0.15);
+  font-size: 0.9rem; font-weight: 700; letter-spacing: 0.02em;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.wa-cta:hover { background: #1fb855; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,211,102,0.45), 0 2px 6px rgba(0,0,0,0.2); }
+.wa-cta svg { width: 22px; height: 22px; display: block; }
+.wa-cta .wa-label { white-space: nowrap; }
+@media (max-width: 520px) {
+  .wa-cta { padding: 0.85rem; border-radius: 50%; }
+  .wa-cta .wa-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-cta { transition: none; }
+  .wa-cta:hover { transform: none; }
+}
+
+/* ── Cookie banner ── */
+.cookie-banner {
+  position: fixed; left: 1rem; right: 1rem; bottom: 1rem;
+  max-width: 640px; margin: 0 auto; z-index: 95;
+  background: #1d1108; color: #fff;
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+  padding: 0.9rem 1rem;
+  display: flex; align-items: center; gap: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  font-size: 0.82rem; line-height: 1.55;
+  animation: cookieIn 0.35s ease both;
+}
+.cookie-text { flex: 1; color: rgba(255,255,255,0.9); }
+.cookie-ok {
+  flex-shrink: 0; background: var(--p); color: #fff;
+  border: none; padding: 0.55rem 1.1rem;
+  font-weight: 700; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase;
+  border-radius: 6px; cursor: pointer; transition: background 0.2s;
+}
+.cookie-ok:hover { background: var(--p-light); }
+.cookie-out { animation: cookieOut 0.28s ease both; }
+@keyframes cookieIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes cookieOut { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(12px); } }
+@media (max-width: 520px) {
+  .cookie-banner { flex-direction: column; align-items: stretch; text-align: center; }
+  .cookie-ok { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cookie-banner { animation: none; }
+  .cookie-out { animation: none; opacity: 0; }
+}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
 
 <nav>
-  <a href="contable.html" class="logo">
+  <a href="contable.html" class="logo" aria-label="Volver al inicio del área contable">
     <span class="logo-abbr">PL<span>B</span></span>
     <div class="logo-sep"></div>
     <span class="logo-name">Área Contable</span>
@@ -109,22 +220,43 @@ main { padding-top: 6rem; padding-bottom: 6rem; }
   <a href="contable.html#insights" class="back-btn">← Volver</a>
 </nav>
 
-<main>
+<main id="contenido">
   <div class="page-header">
     <div class="page-label">Novedades Contables</div>
     <h1 class="page-title">Actualidad Impositiva</h1>
     <p class="page-sub">Publicaciones del área contable, ordenadas por fecha.</p>
   </div>
 
-  <div class="filter-bar">
+  <div class="filter-bar" role="toolbar" aria-label="Filtros por categoría">
     <button class="filter-btn active" onclick="filterInsights('all')">Todos</button>
     <button class="filter-btn" data-cat="impuestos" onclick="filterInsights('impuestos')">Impuestos</button>
     <button class="filter-btn" data-cat="Aduanero" onclick="filterInsights('Aduanero')">Aduanero</button>
     <button class="filter-btn" data-cat="Penal Económico" onclick="filterInsights('Penal Económico')">Penal Económico</button>
   </div>
 
-  <div class="insights-grid" id="insightsGrid"></div>
+  <div class="insights-grid" id="insightsGrid" aria-live="polite"></div>
 </main>
+
+<footer class="site-footer">
+  <span>© 2025 Pantarotto Lértora Bardagí & Asocs. Todos los derechos reservados.</span>
+  <nav class="footer-legal" aria-label="Enlaces legales">
+    <a href="#">Política de privacidad</a>
+    <span aria-hidden="true">·</span>
+    <a href="#">Términos de uso</a>
+  </nav>
+  <nav aria-label="Navegación del sitio">
+    <a href="contable.html">Área Contable</a>
+  </nav>
+</footer>
+
+<!-- WhatsApp floating CTA (reemplazar XXXXXXXXXXX por el número del estudio en formato internacional sin + ni espacios; p.ej. 5491122223333) -->
+<a class="wa-cta" href="https://wa.me/XXXXXXXXXXX?text=Hola%2C%20quisiera%20hacer%20una%20consulta%20al%20%C3%A1rea%20contable."
+   target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M19.11 4.91A10.05 10.05 0 0 0 12 2a10.05 10.05 0 0 0-8.7 15.05L2 22l5.08-1.33A10.05 10.05 0 1 0 19.11 4.91zM12 20.13a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.02.79.81-2.94-.2-.31A8.13 8.13 0 1 1 20.13 12 8.14 8.14 0 0 1 12 20.13zm4.45-6.1c-.24-.12-1.44-.71-1.66-.79s-.39-.12-.55.12-.63.79-.77.95-.28.18-.52.06a6.68 6.68 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.34a.45.45 0 0 0 0-.43c-.06-.12-.55-1.33-.75-1.82s-.4-.41-.55-.42h-.47a.9.9 0 0 0-.66.31A2.78 2.78 0 0 0 7 9.7a4.84 4.84 0 0 0 1 2.56 11.06 11.06 0 0 0 4.22 3.74c.59.25 1.05.4 1.41.51a3.4 3.4 0 0 0 1.56.1 2.55 2.55 0 0 0 1.68-1.18 2.06 2.06 0 0 0 .14-1.18c-.06-.1-.22-.16-.46-.28z"/>
+  </svg>
+  <span class="wa-label">WhatsApp</span>
+</a>
 
 <script>
 const insights = [
@@ -164,7 +296,7 @@ function renderGrid() {
     return;
   }
   grid.innerHTML = filtered.map(function(ins) {
-    return '<a class="insight-card" href="' + ins.url + '" target="_blank">' +
+    return '<a class="insight-card" href="' + ins.url + '" target="_blank" rel="noopener noreferrer">' +
       '<div class="insight-tag">' + ins.cat + '</div>' +
       '<div class="insight-title">' + ins.title + '</div>' +
       '<p class="insight-excerpt">' + ins.excerpt + '</p>' +
@@ -175,6 +307,62 @@ function renderGrid() {
 }
 
 renderGrid();
+
+// ── Schema.org: ItemList of NewsArticle ──
+(function(){
+  var items = insights.map(function(ins, i){
+    return {
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "NewsArticle",
+        "headline": ins.title,
+        "description": ins.excerpt,
+        "url": ins.url,
+        "articleSection": ins.cat,
+        "datePublished": ins.date,
+        "publisher": {
+          "@type": "Organization",
+          "name": "Pantarotto Lértora Bardagí & Asocs. — Área Contable"
+        }
+      }
+    };
+  });
+  var ld = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Novedades Contables — PLB Contable",
+    "description": "Publicaciones del área contable de Pantarotto Lértora Bardagí & Asocs.",
+    "url": "https://pl-abogados.com/novedades-contable.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Pantarotto Lértora Bardagí & Asocs. — Área Contable",
+      "url": "https://pl-abogados.com/contable.html"
+    },
+    "mainEntity": { "@type": "ItemList", "itemListElement": items }
+  };
+  var s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.textContent = JSON.stringify(ld);
+  document.head.appendChild(s);
+})();
+
+// ── Cookie banner ──
+(function(){
+  if (localStorage.getItem('plb_cookie_ack') === '1') return;
+  var el = document.createElement('div');
+  el.className = 'cookie-banner';
+  el.setAttribute('role','region');
+  el.setAttribute('aria-label','Aviso de cookies');
+  el.innerHTML = '<span class="cookie-text">Usamos cookies técnicas para mejorar la experiencia de navegación. Al continuar navegando aceptás su uso.</span>' +
+                 '<button type="button" class="cookie-ok">Entendido</button>';
+  document.body.appendChild(el);
+  el.querySelector('.cookie-ok').addEventListener('click', function(){
+    try { localStorage.setItem('plb_cookie_ack','1'); } catch(e){}
+    el.classList.add('cookie-out');
+    setTimeout(function(){ el.remove(); }, 280);
+  });
+})();
 </script>
 </body>
 </html>
