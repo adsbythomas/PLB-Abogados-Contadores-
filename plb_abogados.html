@@ -598,6 +598,55 @@ body.dark .timeline-event-desc { color: #999; }
 
 /* ── COUNTER visible style ── */
 .counter { display: inline-block; }
+
+/* ── HERO VIDEO BACKGROUND ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero-video-wrap {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,20,40,0.72) 0%, rgba(10,20,40,0.82) 100%);
+  z-index: 1;
+}
+.hero > * { position: relative; z-index: 2; }
+.hero::before { display: none; }
+
+/* Hero text colors for dark video */
+.hero-firm { color: #ffffff !important; }
+.hero-firm span { color: #6b9de0 !important; }
+.hero-tag { color: #6b9de0 !important; }
+.hero-tag::after { background: #6b9de0 !important; }
+.hero-title { color: #ffffff !important; }
+.hero-title .accent { color: #6b9de0 !important; }
+.hero-sub { color: rgba(255,255,255,0.82) !important; }
+.btn-solid { background: #ffffff !important; color: #0a1428 !important; }
+.btn-solid:hover { background: #6b9de0 !important; color: #ffffff !important; }
+.btn-ghost { color: #ffffff !important; border-color: rgba(255,255,255,0.4) !important; }
+.btn-ghost:hover { background: rgba(255,255,255,0.1) !important; border-color: #ffffff !important; }
+
+/* Rest of page has subtle gradient background */
+body {
+  background: linear-gradient(180deg, #e8e8e8 0%, #efefef 50%, #e8e8e8 100%) !important;
+}
 </style>
 </head>
 <body>
@@ -643,7 +692,13 @@ body.dark .timeline-event-desc { color: #999; }
   </div>
   <button class="hamburger" onclick="openMob()"><span></span><span></span><span></span></button>
 </nav>
-<section class="hero" id="inicio">
+<section class="hero" style="min-height:100vh" id="inicio">
+  <div class="hero-video-wrap">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="https://videos.pexels.com/video-files/4205393/4205393-hd_1920_1080_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
   <div class="hero-content">
     <div class="hero-firm">PL<span style="color:var(--p)">B</span></div>
     <div class="hero-tag" data-i18n="hero.tag">Abogados · Buenos Aires</div>
