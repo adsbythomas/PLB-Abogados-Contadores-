@@ -276,6 +276,24 @@ main { padding-top: 8rem !important; padding-bottom: 6rem !important; }
   background: #fafaf8 !important;
 }
 
+
+/* FIX v3: padding lateral mínimo garantizado */
+:root { --max-w: 1200px; }
+nav,
+main,
+footer,
+.site-footer {
+  padding-left: max(3rem, calc((100vw - var(--max-w)) / 2)) !important;
+  padding-right: max(3rem, calc((100vw - var(--max-w)) / 2)) !important;
+}
+main { padding-top: 8rem !important; padding-bottom: 6rem !important; }
+@media (max-width: 768px) {
+  nav, main, footer, .site-footer {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
 </style>
 </head>
 <body>
